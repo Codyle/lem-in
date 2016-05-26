@@ -6,7 +6,7 @@
 /*   By: vgosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 18:05:46 by vgosset           #+#    #+#             */
-/*   Updated: 2016/05/11 15:35:25 by vgosset          ###   ########.fr       */
+/*   Updated: 2016/05/26 18:07:16 by vgosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@ void	parse(void)
 	while (get_next_line(0, &line) == 1)
 	{
 		if (into_struct(line) == -1)
-		{
-			check = 1;
-			break;
-		}
-		if (into_struct(line) == 0)
-		{
-			check = 2;
-			break;
-		}
+			{
+				check = -1;
+				break;
+			}
+			if (into_struct(line) == 0)
+			{
+				check = 1;
+				break;
+			}
 		count++;
 	}
 	if (check == 0)
@@ -40,7 +40,7 @@ void	parse(void)
 		while (get_next_line(0, &line) == 1)
 			ft_putendl(line);
 	}
-	if (check == 2)
+	else if (check == 1)
 	{
 		while (get_next_line(0, &line) == 1 && count != 0)
 		{
@@ -50,4 +50,12 @@ void	parse(void)
 	}
 	else
 		ft_putendl("error");
+}
+
+int		into_struct(char *line)
+{
+	if (line)
+	{
+	}
+	return (1);
 }
