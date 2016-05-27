@@ -6,7 +6,7 @@
 /*   By: vgosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 18:05:46 by vgosset           #+#    #+#             */
-/*   Updated: 2016/05/26 18:07:16 by vgosset          ###   ########.fr       */
+/*   Updated: 2016/05/27 14:45:50 by vgosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	parse(void)
 			}
 		count++;
 	}
+	/* affichage, a voir plus tard.
 	if (check == 0)
 	{
 		while (get_next_line(0, &line) == 1)
@@ -50,12 +51,11 @@ void	parse(void)
 	}
 	else
 		ft_putendl("error");
-}
+}*/
+
+
 
 int		into_struct(char *line)
 {
-	if (line)
-	{
-	}
-	return (1);
+	int
 }
