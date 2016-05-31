@@ -6,15 +6,15 @@
 /*   By: vgosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 18:05:46 by vgosset           #+#    #+#             */
-/*   Updated: 2016/05/27 14:45:50 by vgosset          ###   ########.fr       */
+/*   Updated: 2016/05/31 16:46:16 by vgosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	parse(void)
+void	(void)
 {
-	char	*line;
+	/*char	*line; affichage, a voir plus tard.
 	int		check;
 	int		count;
 
@@ -35,7 +35,6 @@ void	parse(void)
 			}
 		count++;
 	}
-	/* affichage, a voir plus tard.
 	if (check == 0)
 	{
 		while (get_next_line(0, &line) == 1)
@@ -55,7 +54,15 @@ void	parse(void)
 
 
 
-int		into_struct(char *line)
+void	parse(void)
 {
-	int
+	while (get_next_line(0, &line) == 1)
+	{
+		if (line[0] == '#' && line[1] != '#')
+			continue;
+		if (line[0] == '#' && line[1] == '#')
+			if (check_com
+		if (is_int == 1)
+		{
+
 }
