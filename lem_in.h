@@ -6,7 +6,7 @@
 /*   By: vgosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/11 14:46:17 by vgosset           #+#    #+#             */
-/*   Updated: 2016/05/31 16:46:20 by vgosset          ###   ########.fr       */
+/*   Updated: 2016/06/02 16:39:23 by vgosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ typedef struct		s_map
 	int				room;
 }					t_map;
 
+int s;
+int e;
+
+int		ft_strchr2(char *s, char c);
 void	parse(void);
 int		into_struct(char *line);
 
