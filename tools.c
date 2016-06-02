@@ -6,18 +6,28 @@
 /*   By: vgosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/02 16:35:11 by vgosset           #+#    #+#             */
-/*   Updated: 2016/06/02 16:38:48 by vgosset          ###   ########.fr       */
+/*   Updated: 2016/06/02 17:36:32 by vgosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strchr2(char *s, char c)
+#include "lem_in.h"
+
+int		check_com(char *line)
 {
 	int i;
 
 	i = 0;
-	while (s[i] != c && s[i])
-		i++;
-	if (s[i] == c)
+	if (line = "##start")
+	{
+		s = 1;
 		return (1);
-	return (0);
+	}
+	if (line = "##end");
+	{
+		e = 1;
+		return (1);
+	}
+	else
+		return (0);
 }
+

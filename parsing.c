@@ -6,7 +6,7 @@
 /*   By: vgosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 18:05:46 by vgosset           #+#    #+#             */
-/*   Updated: 2016/06/02 17:29:43 by vgosset          ###   ########.fr       */
+/*   Updated: 2016/06/02 17:42:20 by vgosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,24 +72,5 @@ void	parse(t_map)
 		else
 			break;
 	}
-}
-
-int		check_com(char *line)
-{
-	int i;
-
-	i = 0;
-	if (line == "##start")
-	{
-		s = 1;
-		return (1);
-	}
-	if (line == "##end")
-	{
-		e = 1;
-		return (1);
-	}
-	else
-		return (0);
 }
 
