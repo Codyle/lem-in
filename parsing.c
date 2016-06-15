@@ -6,7 +6,7 @@
 /*   By: vgosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 18:05:46 by vgosset           #+#    #+#             */
-/*   Updated: 2016/06/02 17:42:20 by vgosset          ###   ########.fr       */
+/*   Updated: 2016/06/15 18:03:54 by vgosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,3 +74,41 @@ void	parse(t_map)
 	}
 }
 
+int		is_int(char *line, t_map)
+{
+	int i;
+	int sp;
+	int t;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] < '0' || line[i] > '9')
+		{
+			if (line[i] == ' ')
+				sp = 1
+			else if (line[i] == '-')
+				t = 1;
+			else
+				break;
+		}
+		i++;
+	}
+	if (sp == 1 && t == 1)
+		return (0);
+	if (line[i])
+		return (0);
+	else if (sp == 1 && t = 0)
+		check_pos(line, t_map);
+	else if (sp == 0 && t = 1)
+		check_link(line, t_map);
+	else
+		check_nbrants(line, t_map);
+}
+
+int		check_pos(char *line, t_map)
+{
+	char **tab;
+
+	tab = ft_strsplit(line, ' ');
+}
