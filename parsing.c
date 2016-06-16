@@ -6,7 +6,7 @@
 /*   By: vgosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 18:05:46 by vgosset           #+#    #+#             */
-/*   Updated: 2016/06/15 18:03:54 by vgosset          ###   ########.fr       */
+/*   Updated: 2016/06/16 14:03:16 by vgosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	(void)
 
 
 
-void	parse(t_map)
+void	parse(t_map *map, t_room *room)
 {
 	while (get_next_line(0, &line) == 1)
 	{
@@ -67,48 +67,49 @@ void	parse(t_map)
 			else
 				break;
 		}
-		if (is_int(line) == 1)
-			continue;
-		else
-			break;
-	}
-}
-
-int		is_int(char *line, t_map)
-{
-	int i;
-	int sp;
-	int t;
-
-	i = 0;
-	while (line[i])
-	{
-		if (line[i] < '0' || line[i] > '9')
+		if (find_type(line) == 1)
 		{
-			if (line[i] == ' ')
-				sp = 1
-			else if (line[i] == '-')
-				t = 1;
-			else
+			if (check_ants(line, t_map) == 0)
 				break;
 		}
-		i++;
+		else if (find_type(line) == 2)
+		{
+			if (check_room(line, t_map) == 0)
+				break;
+		}
+		else
+		{
+			if (check_link(line, t_map) == 0)
+				break;
+		}
 	}
-	if (sp == 1 && t == 1)
-		return (0);
-	if (line[i])
-		return (0);
-	else if (sp == 1 && t = 0)
-		check_pos(line, t_map);
-	else if (sp == 0 && t = 1)
-		check_link(line, t_map);
-	else
-		check_nbrants(line, t_map);
 }
 
-int		check_pos(char *line, t_map)
+int		check_ants(char *line, t_map *map)
+{
+	if (ft_atoi(line) == 0)
+		return (0);
+	else
+		map->ant = ft_atoi(line);
+	return (1);
+}
+
+int		check_room(char *line, t_map *map, t_room *room)
 {
 	char **tab;
 
+	if (check_nbrc(line, ' ') != 2)
+		return (0);
 	tab = ft_strsplit(line, ' ');
+	room->name = tab[0];
+	if (ft_atoi(tab[1]) == 0)
+		return (0);
+	else
+		room->x = ft_atoi(tab[1]);
+	if (ft_atoi(tab[2]) == 0)
+		return (0);
+	else
+		room->y = ft_atoi(tab[2]);
 }
+
+
