@@ -6,7 +6,7 @@
 /*   By: vgosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 18:05:46 by vgosset           #+#    #+#             */
-/*   Updated: 2016/06/16 14:03:16 by vgosset          ###   ########.fr       */
+/*   Updated: 2016/08/16 15:21:04 by vgosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,10 @@ int		check_room(char *line, t_map *map, t_room *room)
 		return (0);
 	tab = ft_strsplit(line, ' ');
 	room->name = tab[0];
+	if (ft_atoi(tab[0]) == 0)
+		return (0);
+	else
+		room->name = tab[0];
 	if (ft_atoi(tab[1]) == 0)
 		return (0);
 	else
@@ -112,4 +116,7 @@ int		check_room(char *line, t_map *map, t_room *room)
 		room->y = ft_atoi(tab[2]);
 }
 
-
+int		check_link(char *line, t_room *room)
+{
+	
+}
