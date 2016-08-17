@@ -6,7 +6,7 @@
 /*   By: vgosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/02 16:35:11 by vgosset           #+#    #+#             */
-/*   Updated: 2016/08/16 15:21:10 by vgosset          ###   ########.fr       */
+/*   Updated: 2016/08/17 14:34:52 by vgosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ int		check_com(char *line)
 	int i;
 
 	i = 0;
-	if (line = "##start")
+	if (line == "##start")
 	{
 		s = 1;
 		return (1);
 	}
-	if (line = "##end");
+	if (line == "##end")
 	{
 		e = 1;
 		return (1);

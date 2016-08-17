@@ -6,15 +6,15 @@
 /*   By: vgosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 18:05:46 by vgosset           #+#    #+#             */
-/*   Updated: 2016/08/17 13:06:17 by vgosset          ###   ########.fr       */
+/*   Updated: 2016/08/17 14:34:49 by vgosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	(void)
+/*void	(void)
 {
-	/*char	*line; affichage, a voir plus tard.
+	char	*line; affichage, a voir plus tard.
 	int		check;
 	int		count;
 
@@ -54,38 +54,8 @@ void	(void)
 
 
 
-void	parse(t_map *map, t_room *room)
-{
-	while (get_next_line(0, &line) == 1)
-	{
-		if (line[0] == '#' && line[1] != '#')
-			continue;
-		if (line[0] == '#' && line[1] == '#')
-		{
-			if (check_com(line) == 1)
-				continue;
-			else
-				break;
-		}
-		if (find_type(line) == 1)
-		{
-			if (check_ants(line, t_map) == 0)
-				break;
-		}
-		else if (find_type(line) == 2)
-		{
-			if (check_room(line, t_map) == 0)
-				break;
-		}
-		else
-		{
-			if (check_link(line, t_map) == 0)
-				break;
-		}
-	}
-}
 
-int		check_ants(char *line, t_map *map)
+static int		check_ants(char *line, t_map *map)
 {
 	if (ft_atoi(line) == 0)
 		return (0);
@@ -94,7 +64,27 @@ int		check_ants(char *line, t_map *map)
 	return (1);
 }
 
-int		check_room(char *line, t_map *map, t_room *room)
+static int		check_link(char *line, t_room *room, t_map *map)
+{
+	struct s_room *tmp;
+	char **tab;
+	struct s_nei *nei;
+
+	tmp = map->start;
+	tab = ft_strsplit(line, '-');
+	while (tmp->next && tmp->name != tab[0])
+		tmp = tmp->next;
+	if (tmp->name == tab[0])
+	{
+		while (nei->next)
+			nei = nei->next;
+		nei->name = tab[1];
+		return (1);
+	}
+	return (0);
+}
+
+static int		check_room(char *line, t_map *map, t_room *room)
 {
 	char **tab;
 
@@ -116,20 +106,38 @@ int		check_room(char *line, t_map *map, t_room *room)
 		map->start = room;
 	if (s == 1)
 		map->end = room;
+	return (1);
 }
 
-int		check_link(char *line, t_room *room, t_map *map)
-{
-	struct t_room tmp;
 
-	tmp = map->start;
-	ft_strsplit(line, '-');
-	while (tmp->next && tmp->name != tab[0])
-		tmp = tmp->next;
-	if (tmp->name == tab[0])
+void	parse(char *line, t_map *map, t_room *room)
+{
+	while (get_next_line(0, &line) == 1)
 	{
-		while (nei->next)
-			nei = nei->next;
-		nei->name = tab[1];
+		if (line[0] == '#' && line[1] != '#')
+			continue;
+		if (line[0] == '#' && line[1] == '#')
+		{
+			if (check_com(line) == 1)
+				continue;
+			else
+				break;
+		}
+		if (find_type(line) == 1)
+		{
+			if (check_ants(line, map) == 0)
+				break;
+		}
+		else if (find_type(line) == 2)
+		{
+			if (check_room(line, map, room) == 0)
+				break;
+		}
+		else
+		{
+			if (check_link(line, room, map) == 0)
+				break;
+		}
 	}
 }
+
