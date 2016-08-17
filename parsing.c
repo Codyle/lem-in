@@ -6,7 +6,7 @@
 /*   By: vgosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 18:05:46 by vgosset           #+#    #+#             */
-/*   Updated: 2016/08/16 15:21:04 by vgosset          ###   ########.fr       */
+/*   Updated: 2016/08/17 12:55:10 by vgosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ int		check_room(char *line, t_map *map, t_room *room)
 {
 	char **tab;
 
+	while (room->next)
+		room = room->next;
 	if (check_nbrc(line, ' ') != 2)
 		return (0);
 	tab = ft_strsplit(line, ' ');
@@ -114,9 +116,30 @@ int		check_room(char *line, t_map *map, t_room *room)
 		return (0);
 	else
 		room->y = ft_atoi(tab[2]);
+	if (s == 1)
+		map->start = room;
+	if (s == 1)
+		map->end = room;
 }
 
-int		check_link(char *line, t_room *room)
+int		check_link(char *line, t_room *room, t_map *map)
 {
-	
+	struct t_room tmp;
+
+	tmp = map->start;
+	ft_strsplit(line, '-');
+	while (tmp->next && tmp->name != tab[0])
+		tmp = tmp->next;
+	if (tmp->name == tab[0])
+	{
+		while (nei->next)
+			nei = nei->next;
+		nei->name = tab[1];
+	}
 }
+
+
+
+
+}
+
