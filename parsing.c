@@ -6,7 +6,7 @@
 /*   By: vgosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 18:05:46 by vgosset           #+#    #+#             */
-/*   Updated: 2016/08/17 14:34:49 by vgosset          ###   ########.fr       */
+/*   Updated: 2016/08/17 16:13:07 by vgosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ static int		check_link(char *line, t_room *room, t_map *map)
 
 	tmp = map->start;
 	tab = ft_strsplit(line, '-');
-	while (tmp->next && tmp->name != tab[0])
+	while (tmp->next && ft_strcmp(tmp->name, tab[0]) != 0)
 		tmp = tmp->next;
-	if (tmp->name == tab[0])
+	if (ft_strcmp(tmp->name, tab[0]) == 0)
 	{
 		while (nei->next)
 			nei = nei->next;

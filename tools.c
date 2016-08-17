@@ -6,7 +6,7 @@
 /*   By: vgosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/02 16:35:11 by vgosset           #+#    #+#             */
-/*   Updated: 2016/08/17 14:34:52 by vgosset          ###   ########.fr       */
+/*   Updated: 2016/08/17 16:13:16 by vgosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ int		check_com(char *line)
 	int i;
 
 	i = 0;
-	if (line == "##start")
+	if (ft_strcmp(line, "##start") == 0)
 	{
 		s = 1;
 		return (1);
 	}
-	if (line == "##end")
+	if (ft_strcmp(line, "##end") == 0)
 	{
 		e = 1;
 		return (1);
@@ -56,7 +56,7 @@ int		check_nbrc(char *line, char c)
 	i = 0;
 	while (line[i])
 	{
-		if (line[i] == ' ')
+		if (line[i] == c)
 			res++;
 		i++;
 	}
