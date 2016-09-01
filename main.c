@@ -6,7 +6,7 @@
 /*   By: vgosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/24 15:44:59 by vgosset           #+#    #+#             */
-/*   Updated: 2016/08/17 16:13:14 by vgosset          ###   ########.fr       */
+/*   Updated: 2016/09/01 17:33:50 by vgosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 int		main()
 {
-	parse();
+	t_map *map;
+	t_room *room;
+
+	map = NULL;
+	room = NULL;
+	parse(map, room);
 	return (0);
 }

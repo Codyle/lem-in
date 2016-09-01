@@ -6,7 +6,7 @@
 /*   By: vgosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/11 14:46:17 by vgosset           #+#    #+#             */
-/*   Updated: 2016/08/17 16:13:12 by vgosset          ###   ########.fr       */
+/*   Updated: 2016/09/01 17:33:52 by vgosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int s;
 int e;
 
 int		ft_strchr2(char *s, char c);
-void	parse(char *line, t_map *map, t_room *room);
+void	parse(t_map *map, t_room *room);
 int		into_struct(char *line);
 int		check_com(char *line);
 int		find_type(char *line);

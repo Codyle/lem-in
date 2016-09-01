@@ -6,11 +6,12 @@
 /*   By: vgosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 18:05:46 by vgosset           #+#    #+#             */
-/*   Updated: 2016/08/17 16:13:07 by vgosset          ###   ########.fr       */
+/*   Updated: 2016/09/01 17:33:44 by vgosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+#include "Lib/includes/libft.h"
 
 /*void	(void)
 {
@@ -64,12 +65,13 @@ static int		check_ants(char *line, t_map *map)
 	return (1);
 }
 
-static int		check_link(char *line, t_room *room, t_map *map)
+static int		check_link(char *line, t_map *map)
 {
 	struct s_room *tmp;
 	char **tab;
 	struct s_nei *nei;
 
+	nei = NULL;
 	tmp = map->start;
 	tab = ft_strsplit(line, '-');
 	while (tmp->next && ft_strcmp(tmp->name, tab[0]) != 0)
@@ -110,11 +112,14 @@ static int		check_room(char *line, t_map *map, t_room *room)
 }
 
 
-void	parse(char *line, t_map *map, t_room *room)
+void	parse(t_map *map, t_room *room)
 {
+	char	*line;
+
+	line = NULL;
 	while (get_next_line(0, &line) == 1)
 	{
-		if (line[0] == '#' && line[1] != '#')
+		/*if (line[0] == '#' && line[1] != '#')
 			continue;
 		if (line[0] == '#' && line[1] == '#')
 		{
@@ -135,9 +140,10 @@ void	parse(char *line, t_map *map, t_room *room)
 		}
 		else
 		{
-			if (check_link(line, room, map) == 0)
+			if (check_link(line, map) == 0)
 				break;
-		}
+		}*/
+		ft_printf("%s\n", line);
 	}
 }
 
