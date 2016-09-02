@@ -6,13 +6,13 @@
 /*   By: vgosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/24 15:44:59 by vgosset           #+#    #+#             */
-/*   Updated: 2016/09/01 17:33:50 by vgosset          ###   ########.fr       */
+/*   Updated: 2016/09/02 12:09:31 by vgosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int		main()
+int		main(int ac, char **av)
 {
 	t_map *map;
 	t_room *room;

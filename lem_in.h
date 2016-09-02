@@ -6,7 +6,7 @@
 /*   By: vgosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/11 14:46:17 by vgosset           #+#    #+#             */
-/*   Updated: 2016/09/01 17:33:52 by vgosset          ###   ########.fr       */
+/*   Updated: 2016/09/02 12:09:33 by vgosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ int		into_struct(char *line);
 int		check_com(char *line);
 int		find_type(char *line);
 int		check_nbrc(char *line, char c);
+t_map	*init_map(t_map *map);
 
 #endif

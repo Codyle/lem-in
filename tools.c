@@ -6,7 +6,7 @@
 /*   By: vgosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/02 16:35:11 by vgosset           #+#    #+#             */
-/*   Updated: 2016/09/01 17:33:46 by vgosset          ###   ########.fr       */
+/*   Updated: 2016/09/02 12:09:30 by vgosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,12 @@ int		check_nbrc(char *line, char c)
 		i++;
 	}
 	return (res);
+}
+
+t_map	*init_map(t_map *map)
+{
+	map = (t_map *)malloc(sizeof(*map));
+	map->ant = 0;
+	map->room = 0;
+	return (map);
 }

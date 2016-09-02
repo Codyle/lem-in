@@ -6,7 +6,7 @@
 /*   By: vgosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 18:05:46 by vgosset           #+#    #+#             */
-/*   Updated: 2016/09/01 17:33:44 by vgosset          ###   ########.fr       */
+/*   Updated: 2016/09/02 12:09:28 by vgosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,13 @@ static int		check_ants(char *line, t_map *map)
 	if (ft_atoi(line) == 0)
 		return (0);
 	else
-		map->ant = ft_atoi(line);
+		if (!map)
+			map = init_map(map);
+		if (map->ant == 0)
+			{
+				map->ant = ft_atoi(line);
+				ft_printf("%d\n", map->ant);
+			}
 	return (1);
 }
 
@@ -72,9 +78,11 @@ static int		check_link(char *line, t_map *map)
 	struct s_nei *nei;
 
 	nei = NULL;
+	if (!map)
+		map = init_map(map);
 	tmp = map->start;
 	tab = ft_strsplit(line, '-');
-	while (tmp->next && ft_strcmp(tmp->name, tab[0]) != 0)
+	while (tmp->next && ft_strcmp(tmp->name, tab[0]) != 0) //seg
 		tmp = tmp->next;
 	if (ft_strcmp(tmp->name, tab[0]) == 0)
 	{
@@ -90,7 +98,7 @@ static int		check_room(char *line, t_map *map, t_room *room)
 {
 	char **tab;
 
-	while (room->next)
+	while (room->next) //seg
 		room = room->next;
 	if (check_nbrc(line, ' ') != 2)
 		return (0);
@@ -119,7 +127,7 @@ void	parse(t_map *map, t_room *room)
 	line = NULL;
 	while (get_next_line(0, &line) == 1)
 	{
-		/*if (line[0] == '#' && line[1] != '#')
+		if (line[0] == '#' && line[1] != '#')
 			continue;
 		if (line[0] == '#' && line[1] == '#')
 		{
@@ -142,8 +150,7 @@ void	parse(t_map *map, t_room *room)
 		{
 			if (check_link(line, map) == 0)
 				break;
-		}*/
-		ft_printf("%s\n", line);
+		}
 	}
 }
 
