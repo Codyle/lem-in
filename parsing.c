@@ -6,7 +6,7 @@
 /*   By: vgosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 18:05:46 by vgosset           #+#    #+#             */
-/*   Updated: 2016/09/02 12:09:28 by vgosset          ###   ########.fr       */
+/*   Updated: 2016/09/02 13:17:14 by vgosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,7 @@ static int		check_ants(char *line, t_map *map)
 		if (!map)
 			map = init_map(map);
 		if (map->ant == 0)
-			{
 				map->ant = ft_atoi(line);
-				ft_printf("%d\n", map->ant);
-			}
 	return (1);
 }
 
