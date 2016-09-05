@@ -6,29 +6,18 @@
 /*   By: vgosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/02 16:35:11 by vgosset           #+#    #+#             */
-/*   Updated: 2016/09/02 13:25:32 by vgosset          ###   ########.fr       */
+/*   Updated: 2016/09/05 16:40:05 by vgosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int		check_com(char *line)
+void	check_com(char *line)
 {
-	int i;
-
-	i = 0;
 	if (ft_strcmp(line, "##start") == 0)
-	{
 		s = 1;
-		return (1);
-	}
 	if (ft_strcmp(line, "##end") == 0)
-	{
 		e = 1;
-		return (1);
-	}
-	else
-		return (0);
 }
 
 int		find_type(char *line)
@@ -44,7 +33,10 @@ int		find_type(char *line)
 			return (3);
 		i++;
 	}
-	return (1);
+	if (ft_atoi(line) == 0)
+		return (0);
+	else
+		return (1);
 }
 
 int		check_nbrc(char *line, char c)
@@ -69,4 +61,15 @@ t_map	*init_map(t_map *map)
 	map->ant = 0;
 	map->room = 0;
 	return (map);
+}
+
+t_room	*init_room(t_room *room)
+{
+	room = (t_room *)malloc(sizeof(*room));
+	room->next = NULL;
+	room->ant = 0;
+	room->x = 0;
+	room->y = 0;
+	room->nbr_nei = 0;
+	return (room);
 }

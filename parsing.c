@@ -6,7 +6,7 @@
 /*   By: vgosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 18:05:46 by vgosset           #+#    #+#             */
-/*   Updated: 2016/09/02 13:25:30 by vgosset          ###   ########.fr       */
+/*   Updated: 2016/09/05 16:37:35 by vgosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,21 @@ static int		check_link(char *line, t_map *map)
 static int		check_room(char *line, t_map *map, t_room *room)
 {
 	char **tab;
+	int i;
 
-	while (room->next) //seg
+	i = 0;
+	if (!room)
+		room = init_room(room);
+	while (room->next)
 		room = room->next;
 	if (check_nbrc(line, ' ') != 2)
 		return (0);
 	tab = ft_strsplit(line, ' ');
+	while (tab[i])
+	{
+		ft_printf("%c\n", tab[i]);
+		i++;
+	}
 	room->name = tab[0];
 	if (ft_atoi(tab[1]) == 0)
 		return (0);
@@ -120,19 +129,19 @@ static int		check_room(char *line, t_map *map, t_room *room)
 void	parse(t_map *map, t_room *room)
 {
 	char	*line;
+	int	i;
 
+	i=1;
 	line = NULL;
-	while (get_next_line(0, &line) == 1)
+	while (get_next_line(0,  &line) > 0)
 	{
-		if (line[0] == '#' && line[1] != '#')
-			continue;
+		ft_printf("Valeur %d\n", i);
+		ft_putstr(line);
+		ft_printf("\n");
+		i++;
+		free(line);
 		if (line[0] == '#' && line[1] == '#')
-		{
-			if (check_com(line) == 1)
-				continue;
-			else
-				break;
-		}
+			check_com(line);
 		if (find_type(line) == 1)
 		{
 			if (check_ants(line, map) == 0)
@@ -143,7 +152,7 @@ void	parse(t_map *map, t_room *room)
 			if (check_room(line, map, room) == 0)
 				break;
 		}
-		else
+		else if (find_type(line) == 3)
 		{
 			if (check_link(line, map) == 0)
 				break;

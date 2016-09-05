@@ -6,7 +6,7 @@
 /*   By: vgosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/11 14:46:17 by vgosset           #+#    #+#             */
-/*   Updated: 2016/09/02 13:25:35 by vgosset          ###   ########.fr       */
+/*   Updated: 2016/09/05 16:15:16 by vgosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "Lib/includes/libft.h"
 # include "Lib/includes/get_next_line.h"
+# include <fcntl.h>
 typedef struct		s_nei
 {
 	char			*name;
@@ -47,9 +48,10 @@ int e;
 int		ft_strchr2(char *s, char c);
 void	parse(t_map *map, t_room *room);
 int		into_struct(char *line);
-int		check_com(char *line);
+void	check_com(char *line);
 int		find_type(char *line);
 int		check_nbrc(char *line, char c);
 t_map	*init_map(t_map *map);
+t_room	*init_room(t_room *room);
 
 #endif
