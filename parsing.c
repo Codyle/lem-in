@@ -6,7 +6,7 @@
 /*   By: vgosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 18:05:46 by vgosset           #+#    #+#             */
-/*   Updated: 2016/09/05 16:37:35 by vgosset          ###   ########.fr       */
+/*   Updated: 2016/09/05 18:45:27 by vgosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,16 +99,11 @@ static int		check_room(char *line, t_map *map, t_room *room)
 	i = 0;
 	if (!room)
 		room = init_room(room);
-	while (room->next)
+	while (room->next != NULL)
 		room = room->next;
 	if (check_nbrc(line, ' ') != 2)
 		return (0);
 	tab = ft_strsplit(line, ' ');
-	while (tab[i])
-	{
-		ft_printf("%c\n", tab[i]);
-		i++;
-	}
 	room->name = tab[0];
 	if (ft_atoi(tab[1]) == 0)
 		return (0);
@@ -122,6 +117,7 @@ static int		check_room(char *line, t_map *map, t_room *room)
 		map->start = room;
 	if (s == 1)
 		map->end = room;
+	ft_printf("%d\n", room->y);
 	return (1);
 }
 
@@ -139,7 +135,6 @@ void	parse(t_map *map, t_room *room)
 		ft_putstr(line);
 		ft_printf("\n");
 		i++;
-		free(line);
 		if (line[0] == '#' && line[1] == '#')
 			check_com(line);
 		if (find_type(line) == 1)
@@ -157,6 +152,7 @@ void	parse(t_map *map, t_room *room)
 			if (check_link(line, map) == 0)
 				break;
 		}
+		free(line);
 	}
 }
 
