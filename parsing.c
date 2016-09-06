@@ -6,8 +6,8 @@
 /*   By: vgosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 18:05:46 by vgosset           #+#    #+#             */
-/*   Updated: 2016/09/05 18:57:43 by vgosset          ###   ########.fr       */
-/*                                                                            */
+/*   Updated: 2016/09/06 12:00:04 by vgosset          ###   ########.fr       */
+	/*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
@@ -97,6 +97,8 @@ static int		check_room(char *line, t_map *map, t_room *room)
 	int i;
 
 	i = 0;
+	if (!map)
+		map = init_map(map);
 	if (!room)
 		room = init_room(room);
 	while (room->next != NULL)
@@ -105,11 +107,11 @@ static int		check_room(char *line, t_map *map, t_room *room)
 		return (0);
 	tab = ft_strsplit(line, ' ');
 	room->name = tab[0];
-	if (ft_atoi(tab[1]) == 0)
+	if (*tab[1] < '0' || *tab[1] > '9')
 		return (0);
 	else
 		room->x = ft_atoi(tab[1]);
-	if (ft_atoi(tab[2]) == 0)
+	if (*tab[2] < '0' || *tab[2] > '9')
 		return (0);
 	else
 		room->y = ft_atoi(tab[2]);
@@ -117,7 +119,6 @@ static int		check_room(char *line, t_map *map, t_room *room)
 		map->start = room;
 	if (s == 1)
 		map->end = room;
-	ft_printf("%d\n", room->y);
 	return (1);
 }
 
@@ -131,7 +132,7 @@ void	parse(t_map *map, t_room *room)
 	line = NULL;
 	while (get_next_line(0,  &line) > 0)
 	{
-		ft_printf("Valeur %d\n", i);
+		ft_printf("Ligne  %d : ", i);
 		ft_putstr(line);
 		ft_printf("\n");
 		i++;
